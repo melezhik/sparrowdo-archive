@@ -1,10 +1,23 @@
+task_run  %(
+  task => 'create user',
+  plugin => 'user',
+  parameters => %( name => 'app-user' )
+);
+
 module_run 'RemoteFile', %(
     url       => 'https://github.com/melezhik/remote-file/archive/master.zip',
     location  => '/tmp/foo/bar/master.zip'
 );
 
+task_run  %(
+  task => 'create directory for extraction',
+  plugin => 'directory',
+  parameters => %( path => '/home/app-user/apps/', owner => 'app-user'  )
+);
+
 module_run 'Archive', %(
     source  => '/tmp/foo/bar/master.zip',
-    target  => '/var/data/master'
+    target  => '/home/app-user/apps/data',
+    user    => 'app-user'
 );
   

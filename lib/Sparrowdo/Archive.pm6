@@ -13,18 +13,12 @@ our sub tasks (%args) {
   );
 
   task_run %(
-    task        => "create directory for extraction",
-    plugin      => "directory",
-    parameters  => %( path =>  %args<target>, owner => %args<user> )
-    
-  );
-
-  task_run %(
     task    => "extract files from archive",
     plugin  => "bash",
     parameters => %(
-      command => 'unzip ' ~ %args<source> ~ ' -d ' ~ %args<target>
-      debug => 0,
+      user    => %args<user>,
+      command => 'unzip -o -u ' ~ %args<source> ~ ' -d ' ~ %args<target>,
+      debug   => 0,
     )
   );
 
