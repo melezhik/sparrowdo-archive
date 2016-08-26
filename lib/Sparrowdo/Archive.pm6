@@ -12,12 +12,30 @@ our sub tasks (%args) {
     parameters => %( list => 'tar gzip unzip' )
   );
 
+  my $ext = %args<source>.IO.extension;
+  my $command;
+
+  if $ext eq 'gz' and %args<source> ~~ m/\.tar\.gz$/ {
+    $command = %args<verbose> ??  
+      'tar --verbose -xzf ' ~ %args<source> ~ ' -C ' ~ %args<target> !!
+      'tar -xzf ' ~ %args<source> ~ ' -C ' ~ %args<target>;
+  } elsif $ext eq 'gz' {
+    $command = 'tar -xf ' ~ %args<source> ~ ' -C ' ~ %args<target>;
+  } elsif $ext eq 'zip'  {
+    $command = %args<verbose> ?? 
+      'unzip -v -o -u ' ~ %args<source> ~ ' -d ' ~ %args<target> !!
+      'unzip -o -u ' ~ %args<source> ~ ' -d ' ~ %args<target>;
+  }else {
+    die 'unknown file extension ' ~   %args<source>.IO.extension
+  }
+
+
   task_run %(
     task    => "extract files from archive",
     plugin  => "bash",
     parameters => %(
       user    => %args<user>,
-      command => 'unzip -o -u ' ~ %args<source> ~ ' -d ' ~ %args<target>,
+      command => $command,
       debug   => 0,
     )
   );

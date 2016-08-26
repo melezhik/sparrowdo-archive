@@ -11,9 +11,10 @@ Extract various archives using tar/unzip programs.
     $ cat sparrow file
 
     module_run 'Archive', %(
-        source => '/tmp/foo/bar/master.zip',
-        target => '/var/app',
-        user   => 'alex'
+      source  => '/tmp/nginx/nginx-1.11.3.tar.gz',
+      target  => '/home/app-user/apps/nginx',
+      user    => 'app-user',
+      verbose => 1,
     );
     
 
@@ -31,6 +32,10 @@ A local file path where to store extracted archive data. No default value. Oblig
 
 A user which run a archive program and thus to which user extracted files will belong to. 
 Optional. No default value.
+
+# verbose
+
+Try to run archive extractor program in verbose mode. Default value is `0` ( no verbose ). Optional.
 
 # Author
 

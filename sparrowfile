@@ -9,10 +9,16 @@ module_run 'RemoteFile', %(
     location  => '/tmp/foo/bar/master.zip'
 );
 
+module_run 'RemoteFile', %(
+    url       => 'http://nginx.org/download/nginx-1.11.3.tar.gz',
+    location  => '/tmp/nginx/nginx-1.11.3.tar.gz'
+);
+
+
 task_run  %(
   task => 'create directory for extraction',
   plugin => 'directory',
-  parameters => %( path => '/home/app-user/apps/', owner => 'app-user'  )
+  parameters => %( path => '/home/app-user/apps/nginx', owner => 'app-user'  )
 );
 
 module_run 'Archive', %(
@@ -20,4 +26,11 @@ module_run 'Archive', %(
     target  => '/home/app-user/apps/data',
     user    => 'app-user'
 );
-  
+
+module_run 'Archive', %(
+    source  => '/tmp/nginx/nginx-1.11.3.tar.gz',
+    target  => '/home/app-user/apps/nginx',
+    user    => 'app-user',
+    verbose => 1,
+);
+    
