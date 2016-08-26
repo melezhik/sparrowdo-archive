@@ -3,3 +3,8 @@ module_run 'RemoteFile', %(
     location  => '/tmp/foo/bar/master.zip'
 );
 
+module_run 'Archive', %(
+    source  => '/tmp/foo/bar/master.zip',
+    target  => '/var/data/master'
+);
+  
