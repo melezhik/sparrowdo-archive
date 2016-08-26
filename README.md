@@ -43,7 +43,7 @@ A local file path where to store extracted archive data. No default value. Oblig
 A user which run a archive program and thus to which user extracted files will belong to. 
 Optional. No default value.
 
-# verbose
+## verbose
 
 Try to run archive extractor program in verbose mode. Default value is `0` ( no verbose ). Optional.
 
