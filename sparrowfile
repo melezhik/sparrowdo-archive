@@ -18,7 +18,21 @@ module_run 'RemoteFile', %(
 task_run  %(
   task => 'create directory for extraction',
   plugin => 'directory',
-  parameters => %( path => '/home/app-user/apps/nginx', owner => 'app-user'  )
+  parameters => %( 
+    path => '/home/app-user/apps', 
+    owner => 'app-user' , 
+    group => 'app-user' 
+  )
+);
+
+task_run  %(
+  task => 'create directory for extraction',
+  plugin => 'directory',
+  parameters => %( 
+    path => '/home/app-user/apps/nginx', 
+    owner => 'app-user' , 
+    group => 'app-user' 
+  )
 );
 
 module_run 'Archive', %(
