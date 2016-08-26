@@ -45,6 +45,6 @@ module_run 'Archive', %(
     source  => '/tmp/nginx/nginx-1.11.3.tar.gz',
     target  => '/home/app-user/apps/nginx',
     user    => 'app-user',
-    verbose => 1,
+    verbose => 0,
 );
     

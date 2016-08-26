@@ -36,7 +36,7 @@ our sub tasks (%args) {
     parameters => %(
       user    => %args<user>,
       command => $command,
-      debug   => 1,
+      debug   => 0,
     )
   );
 
