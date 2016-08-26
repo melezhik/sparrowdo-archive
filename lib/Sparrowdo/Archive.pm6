@@ -15,11 +15,11 @@ our sub tasks (%args) {
   my $ext = %args<source>.IO.extension;
   my $command;
 
-  if $ext eq 'gz' and %args<source> ~~ m/\.tar\.gz$/ {
+  if $ext eq 'gz' {
     $command = %args<verbose> ??  
       'tar --verbose -xzf ' ~ %args<source> ~ ' -C ' ~ %args<target> !!
       'tar -xzf ' ~ %args<source> ~ ' -C ' ~ %args<target>;
-  } elsif $ext eq 'gz' {
+  } elsif $ext eq 'tar' {
     $command = 'tar -xf ' ~ %args<source> ~ ' -C ' ~ %args<target>;
   } elsif $ext eq 'zip'  {
     $command = %args<verbose> ?? 
@@ -36,7 +36,7 @@ our sub tasks (%args) {
     parameters => %(
       user    => %args<user>,
       command => $command,
-      debug   => 0,
+      debug   => 1,
     )
   );
 

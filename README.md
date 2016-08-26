@@ -2,6 +2,16 @@
 
 Extract various archives using tar/unzip programs.
 
+Archive formats supported:
+
+    +-----------+---------------------------+
+    | extension | internal archive program  |
+    +-----------+---------------------------+
+    | *.zip     | unzip                     |
+    | *.tar     | tar                       |
+    | *.tar.gz  | tar                       |
+    +-----------+---------------------------+
+
 # INSTALL
 
     $ panda install Sparrowdo::Archive
