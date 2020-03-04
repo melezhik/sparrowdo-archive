@@ -55,6 +55,12 @@ A user which run a archive program and thus to which user extracted files will b
 
 Optional. No default value.
 
+## no-install-deps
+
+Don't install dependencies ( tar/gzip package, etc ).
+
+Optional.
+
 ## verbose
 
 Try to run archive extractor program in verbose mode. Default value is `0` ( no verbose ). 

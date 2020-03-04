@@ -6,11 +6,13 @@ use Sparrow6::DSL;
 
 our sub tasks (%args) {
 
-  task_run  %(
-    task => 'install archive programs',
-    plugin => 'package-generic',
-    parameters => %( list => 'tar gzip unzip' )
-  );
+  unless %args<no-install-deps> {
+    task_run  %(
+      task => 'install archive programs',
+      plugin => 'package-generic',
+      parameters => %( list => 'tar gzip unzip' )
+    );
+  }
 
   my $ext = %args<source>.IO.extension;
   my $command;
