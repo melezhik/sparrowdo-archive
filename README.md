@@ -30,11 +30,11 @@ Through cli
 Through Sparrow6 DSL
 
 
-   module-run 'Archive', %(
-     source  => '/tmp/foo/test.tar.gz',
-     target  => '/tmp/foo2',
-     verbose => 1,
-   );
+    module-run 'Archive', %(
+      source  => '/tmp/foo/test.tar.gz',
+      target  => '/tmp/foo2',
+      verbose => 1,
+    );
     
 
 # Parameters
