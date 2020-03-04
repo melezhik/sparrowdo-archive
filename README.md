@@ -13,6 +13,10 @@ Archive formats supported:
     | *.gem     | gem                       |
     +-----------+---------------------------+
 
+# Build Status
+
+[![Build Status](https://travis-ci.org/melezhik/sparrowdo-archive.svg?branch=master)](https://travis-ci.org/melezhik/sparrowdo-archive)
+
 # INSTALL
 
     $ zef install Sparrowdo::Archive
